@@ -5,6 +5,8 @@
  */
 package imad.aspiradoraimad;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MSI
@@ -35,5 +37,25 @@ public class AspiDaw {
         dependenciasVilla[2] = "dormitorio2";
         dependenciasVilla[3] = "cocina";
         dependenciasVilla[4] = "Baño";
+        
+         do {
+            final String USUARIO = JOptionPane.showInputDialog(" Dime tu usuario ");
+            final String PASSWORD = JOptionPane.showInputDialog(" Dime tu contraseña ");
+            if (USUARIO.equals("usuario") && PASSWORD.equals("usuario")) {
+
+                JOptionPane.showMessageDialog(null, "Bienvenido\n"
+                        + "Has ingresado satisfactoriamente al sistema", "Mensaje de bienvenida",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+                        + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+                        JOptionPane.ERROR_MESSAGE);
+                acceso = true;
+
+            }
+        } while (acceso);
+        
     }
 }
