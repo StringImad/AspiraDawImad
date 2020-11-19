@@ -38,9 +38,13 @@ public class AspiDaw {
         dependenciasVilla[3] = "cocina";
         dependenciasVilla[4] = "Baño";
         
+        // Login para acceder, se va a repetir hasta que se cumpla la condicion del while
+        // al entrar en el if se sale
          do {
+             //declaración de dos constantes de tipo String
             final String USUARIO = JOptionPane.showInputDialog(" Dime tu usuario ");
             final String PASSWORD = JOptionPane.showInputDialog(" Dime tu contraseña ");
+            // Condicion 
             if (USUARIO.equals("usuario") && PASSWORD.equals("usuario")) {
 
                 JOptionPane.showMessageDialog(null, "Bienvenido\n"
@@ -52,6 +56,7 @@ public class AspiDaw {
                 JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
                         + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
                         JOptionPane.ERROR_MESSAGE);
+                //Al poner el else en true la condición del while se repite
                 acceso = true;
 
             }
