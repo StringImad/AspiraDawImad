@@ -91,7 +91,8 @@ public class AspiDaw {
                         //Si los metros no entran en el if le sale un mensaje de aviso
                         //se realiza el break y sale al menu
                         if (cantidMetros < 0 || cantidMetros > 100) {
-                            JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43");
+                            JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43", "Error al introducir datos",
+                        JOptionPane.ERROR_MESSAGE);
                             eleccionSwitch = true;
                             break;
                         }
@@ -116,7 +117,8 @@ public class AspiDaw {
                         break;
 
                     } else {
-                        JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100");
+                        JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100", "Error al introducir datos",
+                        JOptionPane.ERROR_MESSAGE);
                         //Si la condicion no se cumple se vuelve a repetir el bucle
                         eleccionSwitch = true;
                         break;
@@ -124,7 +126,7 @@ public class AspiDaw {
             }
             //condicion OR hasta que no se cumpla y el while sea false no sale
         } while (eleccionSwitch || eleccionSwitch2);
-        
+
         //Aquí empieza otro bucle do while para el menu, hasta que no se pulse el case 6 que es salir
         //no sale
         do {
@@ -137,13 +139,26 @@ public class AspiDaw {
                     + "4.- ESTADO GENERAL\n"
                     + "5.- BASE DE CARGA\n"
                     + "6.- Salir");
-            
+
             opcionElegida = Integer.parseInt(opcion);
             //Switch en el que va cada opcion del menu
             switch (opcionElegida) {
 
                 case 1:
+                    //Es exactamente igual que el de antes
+                    //Si la carga es erronea da un aviso y sale al menu principal
+                    String nivelBateriaIntroducido = JOptionPane.showInputDialog(" Introduza la carga actual del robot");
+                    nivelBateria = Double.parseDouble(nivelBateriaIntroducido);
+                    if (nivelBateria >= 0 && nivelBateria <= 100) {
 
+                        JOptionPane.showMessageDialog(null, " La carga actual es " + nivelBateria);
+                        break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100", "Error al introducir datos",
+                        JOptionPane.ERROR_MESSAGE);
+
+                        break;
+                    }
                 case 2:
 
                 case 3:
