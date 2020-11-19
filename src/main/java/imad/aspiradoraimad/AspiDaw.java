@@ -92,7 +92,7 @@ public class AspiDaw {
                         //se realiza el break y sale al menu
                         if (cantidMetros < 0 || cantidMetros > 100) {
                             JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43", "Error al introducir datos",
-                        JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.ERROR_MESSAGE);
                             eleccionSwitch = true;
                             break;
                         }
@@ -118,7 +118,7 @@ public class AspiDaw {
 
                     } else {
                         JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100", "Error al introducir datos",
-                        JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.ERROR_MESSAGE);
                         //Si la condicion no se cumple se vuelve a repetir el bucle
                         eleccionSwitch = true;
                         break;
@@ -140,6 +140,7 @@ public class AspiDaw {
                     + "5.- BASE DE CARGA\n"
                     + "6.- Salir");
 
+            
             opcionElegida = Integer.parseInt(opcion);
             //Switch en el que va cada opcion del menu
             switch (opcionElegida) {
@@ -155,12 +156,21 @@ public class AspiDaw {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100", "Error al introducir datos",
-                        JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.ERROR_MESSAGE);
 
                         break;
                     }
                 case 2:
 
+                    String eleccion = JOptionPane.showInputDialog("Opciones del programa\n"
+                            + "1.- Modo Completo\n"
+                            + "2.- Modo dependencias\n");
+                    opcionAspirar = Integer.parseInt(eleccion);
+                    switch (opcionAspirar) {
+                        case 1:
+
+                        case 2:
+                    }
                 case 3:
 
                 case 4:
