@@ -494,7 +494,7 @@ public class AspiDaw {
                     hora = calendario.get(Calendar.HOUR_OF_DAY);
                     minutos = calendario.get(Calendar.MINUTE);
                     segundos = calendario.get(Calendar.SECOND);
-                    //bucle que me suma los metros de las dependencias de la casa
+                    //bucle que suma los metros de las dependencias de la casa
                     for (int i = 0; i < dependenciasCasa.length; i++) {
                         metrosCuadrados += dependenciasCasa[i];
                     }
@@ -512,9 +512,13 @@ public class AspiDaw {
 
                     break;
                 case 5:
-
+                    //la batería la iguala a 100
+                    nivelBateria = 100;
+                    JOptionPane.showMessageDialog(null, "La batería está al 100%");
                 case 6:
-
+                    JOptionPane.showMessageDialog(null, "Pulse aceptar para salir del sistema.");
+                    //al pulsar en case 6 se pone reptir en false por lo tanto sale del programa y del bucle 
+                    repetir = false;
             }
 
         } while (repetir);
