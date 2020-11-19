@@ -29,6 +29,7 @@ public class AspiDaw {
         String posicion = " Base de carga ";
         int metrosCuadrados = 0;
         boolean eleccionSwitch = true;
+        boolean eleccionSwitch2 = true;
 
         //Cracion de los arrays que vamos a utilizar
         //dependeciasCasa no tiene valor ya que se va a meter más tardes
@@ -79,35 +80,48 @@ public class AspiDaw {
                     JOptionPane.showMessageDialog(null, "Usted acaba de seleccionar configuración del sistema");
                     String CantidadDependencias = JOptionPane.showInputDialog(" Introduza el número de dependencias de la casa");
                     int CantDepen = Integer.parseInt(CantidadDependencias);
-                    
+
                     dependenciasCasa = new int[CantDepen];
                     //creación del bucle for que nos va a permitir meter los metros de cada dependencia 
-                   
+
                     for (int i = 0; i < dependenciasCasa.length; i++) {
-                        
+
                         String dependenciasMetros = JOptionPane.showInputDialog(" Introduzca los metros de la dependencia " + (i + 1));
                         int cantidMetros = Integer.parseInt(dependenciasMetros);
                         //Si los metros no entran en el if le sale un mensaje de aviso
                         //se realiza el break y sale al menu
                         if (cantidMetros < 0 || cantidMetros > 100) {
                             JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43");
+                           eleccionSwitch = true;
                             break;
                         }
                         //los valores introducidos por teclado "cantidmetros" 
                         //se almacenan en la posición del array
                         dependenciasCasa[i] = cantidMetros;
-
+                        eleccionSwitch2 = false;
                     }
-                 
-                    eleccionSwitch = true;
+
+                    
                     break;
 
                 case 2:
                     
-                    
+                    String nivelBateriaIntroducido = JOptionPane.showInputDialog(" Introduza la carga actual del robot");
+                    nivelBateria = Double.parseDouble(nivelBateriaIntroducido);
+                    //condicion para que el nivel de carga sea entre 0 y 100
+                    if (nivelBateria >= 0 && nivelBateria <= 100) {  
+                        eleccionSwitch = false;
+                        break;
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100");
+                        //Si la condicion no se cumple se vuelve a repetir el bucle
+                        eleccionSwitch = true;
+                        break;
+                    }
             }
 
-        } while (eleccionSwitch);
+        } while (eleccionSwitch || eleccionSwitch2);
 
     }
 }
