@@ -228,13 +228,110 @@ public class AspiDaw {
                                         }
                                     } while (k != Acumulador2);
 
-                                 
                                 }
-                            
+
                             }
 
                             break;
                         case 2:
+                            
+                            JOptionPane.showMessageDialog(null, "Ha seleccionado el modo dependencias\n"
+                                    + "Elige la habitación a limpiar");
+                            //array que empieza desde 0 a 4 en este caso
+                            //ya que son las dependencias de la casa
+                            String[] botones = {"salon", "dormitorio", "dormitorio2", "cocina", "Baño "};
+                            int ventana = JOptionPane.showOptionDialog(null,
+                                    "Pulsa un boton:",
+                                    " ",
+                                    JOptionPane.DEFAULT_OPTION,
+                                    JOptionPane.QUESTION_MESSAGE, null,
+                                    botones, botones[0]);
+                            switch (ventana) {
+                                case 0: {
+                                    //operacion del caluclo, intentar meter en un metodo
+                                    double gastoBateriaActual = (dependenciasCasa[0] * MODOASPIRACION);
+                                    nivelBateria = (nivelBateria - gastoBateriaActual);
+                                    //si el nivel de bateria es inferior a 3, nos avisa de que no se puede limpiar
+                                    if (nivelBateria < bateriInferior) {
+                                        JOptionPane.showMessageDialog(null, "Modo dependencias\n"
+                                                + "Batería insuficiente para aspirar", "Aspiración",
+                                                JOptionPane.INFORMATION_MESSAGE);
+
+                                        nivelBateria = 3.0;
+                                        //si es mayor que 3 nos avisa de que se ha limpiado y se almacena la posicion
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado con exito");
+                                        posicion = dependenciasVilla[0];
+                                    }
+                                    break;
+                                    //se repite lo mismo en las otras dependencias
+                                }
+                                case 1: {
+                                    double gastoBateriaActual = (dependenciasCasa[1] * MODOASPIRACION);
+                                    nivelBateria = (nivelBateria - gastoBateriaActual);
+
+                                    if (nivelBateria < bateriInferior) {
+                                        JOptionPane.showMessageDialog(null, "Modo dependencias\n"
+                                                + "Batería insuficiente para aspirar", "Aspiración",
+                                                JOptionPane.INFORMATION_MESSAGE);
+                                        nivelBateria = 3.0;
+
+                                    } else {
+                                        posicion = dependenciasVilla[1];
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado con exito");
+                                    }
+                                    break;
+                                }
+                                case 2: {
+                                    double gastoBateriaActual = (dependenciasCasa[2] * MODOASPIRACION);
+                                    nivelBateria = (nivelBateria - gastoBateriaActual);
+
+                                    if (nivelBateria < bateriInferior) {
+                                        JOptionPane.showMessageDialog(null, "Modo dependencias\n"
+                                                + "Batería insuficiente para aspirar", "Aspiración",
+                                                JOptionPane.INFORMATION_MESSAGE);
+                                        nivelBateria = 3.0;
+                                    } else {
+                                        posicion = dependenciasVilla[2];
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado con exito");
+                                    }
+                                    break;
+                                }
+                                case 3: {
+                                    double gastoBateriaActual = (dependenciasCasa[3] * MODOASPIRACION);
+                                    nivelBateria = (nivelBateria - gastoBateriaActual);
+
+                                    if (nivelBateria < bateriInferior) {
+                                        JOptionPane.showMessageDialog(null, "Modo dependencias\n"
+                                                + "Batería insuficiente para aspirar", "Aspiración",
+                                                JOptionPane.INFORMATION_MESSAGE);
+                                        nivelBateria = 3.0;
+                                    } else {
+                                        posicion = dependenciasVilla[3];
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado con exito");
+                                    }
+                                    break;
+                                }
+                                case 4: {
+                                    double gastoBateriaActual = (dependenciasCasa[4] * MODOASPIRACION);
+                                    nivelBateria = (nivelBateria - gastoBateriaActual);
+
+                                    if (nivelBateria < bateriInferior) {
+                                        JOptionPane.showMessageDialog(null, "Modo dependencias\n"
+                                                + "Batería insuficiente para aspirar", "Aspiración",
+                                                JOptionPane.INFORMATION_MESSAGE);
+                                        nivelBateria = 3.0;
+                                    } else {
+                                        posicion = dependenciasVilla[4];
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado con exito");
+                                    }
+
+                                    break;
+                                }
+                                default:
+                                    break;
+                            }
+                            break;
                     }
                 case 3:
 
