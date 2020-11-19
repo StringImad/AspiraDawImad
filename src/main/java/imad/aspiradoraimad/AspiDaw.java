@@ -195,23 +195,23 @@ public class AspiDaw {
                                             JOptionPane.showMessageDialog(null, "No se ha podido limpiar.", "Batería insuficiente", JOptionPane.ERROR_MESSAGE);
                                             break;
                                         }
+                                        //pinta por pantalla las habitaciones que ha limpiado
                                         JOptionPane.showMessageDialog(null, dependenciasVilla[j]);
-
+                                        //guarda en posicion el ultimo sitio donde ha estado el aspirador
                                         posicion = dependenciasVilla[k];
+                                        //aumentan su valor cada vez que se repite el bucle
+                                        //para que nos muestren las habitaciones limpiadas
                                         j++;
                                         Acumulador++;
 
                                         nivelBateria = 3.0;
+                                        //se mantiene el bucle hasta que la posición del array corresponde al numero de vueltas que 
+                                        //ha hecho el bucle
                                     } while (i != Acumulador);
-//                                    j = 0;
-//                                    Acumulador = 0;
+//                                
                                     break;
                                 } else {
-//                                    if (dependenciasCasa[i] > 64) {
-//                                        continue;
-//                                    }
-                                    //     else{
-
+//                                  //Si la condicion no se cumple, es decir se puede limpiar entra en el else
                                     do {
                                         JOptionPane.showMessageDialog(null, "Se ha limpiado el "
                                                 + dependenciasVilla[k] + " los metros limpiados son: "
@@ -228,11 +228,9 @@ public class AspiDaw {
                                         }
                                     } while (k != Acumulador2);
 
-                                    // }
+                                 
                                 }
-                                //   k = 0;
-                                //      Acumulador2 = 0;
-                                // break;
+                            
                             }
 
                             break;
