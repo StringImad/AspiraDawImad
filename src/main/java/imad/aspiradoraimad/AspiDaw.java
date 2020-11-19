@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
 public class AspiDaw {
 
     public static void main(String[] args) {
-
+        
+         Calendar calendario = Calendar.getInstance();
         //Declaración de las variables que vamos a utilizar
         int opcionElegida;
         int eleccionPrincipal;
@@ -488,11 +489,12 @@ public class AspiDaw {
 
                     break;
                 case 4:
-                    //Pregunatr como era el calendario que dijo el profesor
-                    System.out.println("Usted acaba de seleccionar -ESTADO GENERAL.");
+                   
+                  
                     hora = calendario.get(Calendar.HOUR_OF_DAY);
                     minutos = calendario.get(Calendar.MINUTE);
                     segundos = calendario.get(Calendar.SECOND);
+                    //bucle que me suma los metros de las dependencias de la casa
                     for (int i = 0; i < dependenciasCasa.length; i++) {
                         metrosCuadrados += dependenciasCasa[i];
                     }
