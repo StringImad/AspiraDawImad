@@ -76,10 +76,34 @@ public class AspiDaw {
             switch (eleccionPrincipal) {
 
                 case 1:
+                    JOptionPane.showMessageDialog(null, "Usted acaba de seleccionar configuración del sistema");
+                    String CantidadDependencias = JOptionPane.showInputDialog(" Introduza el número de dependencias de la casa");
+                    int CantDepen = Integer.parseInt(CantidadDependencias);
+                    
+                    dependenciasCasa = new int[CantDepen];
+                    //creación del bucle for que nos va a permitir meter los metros de cada dependencia 
+                   
+                    for (int i = 0; i < dependenciasCasa.length; i++) {
+                        
+                        String dependenciasMetros = JOptionPane.showInputDialog(" Introduzca los metros de la dependencia " + (i + 1));
+                        int cantidMetros = Integer.parseInt(dependenciasMetros);
+                        //Si los metros no entran en el if le sale un mensaje de aviso
+                        //se realiza el break y sale al menu
+                        if (cantidMetros < 0 || cantidMetros > 100) {
+                            JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43");
+                            break;
+                        }
+                        //los valores introducidos por teclado "cantidmetros" 
+                        //se almacenan en la posición del array
+                        dependenciasCasa[i] = cantidMetros;
 
+                    }
+                 
+                    eleccionSwitch = true;
                     break;
 
                 case 2:
+                    
                     
             }
 
