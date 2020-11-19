@@ -515,6 +515,7 @@ public class AspiDaw {
                     //la batería la iguala a 100
                     nivelBateria = 100;
                     JOptionPane.showMessageDialog(null, "La batería está al 100%");
+                    break;
                 case 6:
                     JOptionPane.showMessageDialog(null, "Pulse aceptar para salir del sistema.");
                     //al pulsar en case 6 se pone reptir en false por lo tanto sale del programa y del bucle 
