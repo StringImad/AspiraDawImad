@@ -139,8 +139,10 @@ public class AspiDaw {
                     + "4.- ESTADO GENERAL\n"
                     + "5.- BASE DE CARGA\n"
                     + "6.- Salir");
-
-            
+            int j = 0;
+            int k = 0;
+            int Acumulador = 0;
+            int Acumulador2 = 0;
             opcionElegida = Integer.parseInt(opcion);
             //Switch en el que va cada opcion del menu
             switch (opcionElegida) {
@@ -168,7 +170,72 @@ public class AspiDaw {
                     opcionAspirar = Integer.parseInt(eleccion);
                     switch (opcionAspirar) {
                         case 1:
+                            JOptionPane.showMessageDialog(null, "Ha seleccionado el modo completo");
+                            //bucle for que recorre todas las dependencias creadas
+                            for (int i = 0; i < dependenciasCasa.length; i++) {
 
+                                //calculo que realiza el programa a la hora de limpiar las habitaciones
+                                //Si tenemos un hab de 10m y nose consume 1.5 el metro
+                                //el gastoBateriaActual = 15%
+                                //si la bateria esta al 100%, le restamos los 15% que ha gastado al limpiar una habitacion
+                                //si el resultado es mayor que, en este caso lo es, la marca como limpiada.
+                                double gastoBateriaActual = (dependenciasCasa[i] * MODOASPIRACION);
+                                nivelBateria = (nivelBateria - gastoBateriaActual);
+                                //condicion si la bateria es menor o igual que 3
+                                if (nivelBateria <= bateriInferior) {
+                                    //mensaje informativo que no se puede limpiar
+                                    JOptionPane.showMessageDialog(null, "La bateria es insuficiente para seguir limpiando."
+                                            + " Las habitaciones limpiadas son: ");
+                                    //do while para que nos avise de las dependencias que ha podido limpiar
+                                    do {
+                                        //como esta planteada la aspiradora es imposible que limpie una hab de mas de 64 metros
+                                        //entonces tengo puesto el if para que se salga y no muestre las habitaciones limpias
+                                        //tambien si k es menor que 1 significa que no ha podido limpiar ninguna habitación por lo tanto se sale tambien
+                                        if (dependenciasCasa[i] > 64 || k < 1) {
+                                            JOptionPane.showMessageDialog(null, "No se ha podido limpiar.", "Batería insuficiente", JOptionPane.ERROR_MESSAGE);
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, dependenciasVilla[j]);
+
+                                        posicion = dependenciasVilla[k];
+                                        j++;
+                                        Acumulador++;
+
+                                        nivelBateria = 3.0;
+                                    } while (i != Acumulador);
+//                                    j = 0;
+//                                    Acumulador = 0;
+                                    break;
+                                } else {
+//                                    if (dependenciasCasa[i] > 64) {
+//                                        continue;
+//                                    }
+                                    //     else{
+
+                                    do {
+                                        JOptionPane.showMessageDialog(null, "Se ha limpiado el "
+                                                + dependenciasVilla[k] + " los metros limpiados son: "
+                                                + dependenciasCasa[i] + "\n Nivel de bateria actual es " + nivelBateria);
+
+                                        k++;
+                                        Acumulador2++;
+
+                                        //Condicion para cuando limpie todas las habitaciones vuelva a la base de carga
+                                        if (k >= dependenciasCasa.length) {
+                                            posicion = " Base de carga";
+                                        } else {
+                                            posicion = dependenciasVilla[k];
+                                        }
+                                    } while (k != Acumulador2);
+
+                                    // }
+                                }
+                                //   k = 0;
+                                //      Acumulador2 = 0;
+                                // break;
+                            }
+
+                            break;
                         case 2:
                     }
                 case 3:
