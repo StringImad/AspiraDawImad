@@ -92,7 +92,7 @@ public class AspiDaw {
                         //se realiza el break y sale al menu
                         if (cantidMetros < 0 || cantidMetros > 100) {
                             JOptionPane.showMessageDialog(null, " Los metros deben de ser mayores que 0 y menores de 43");
-                           eleccionSwitch = true;
+                            eleccionSwitch = true;
                             break;
                         }
                         //los valores introducidos por teclado "cantidmetros" 
@@ -101,18 +101,20 @@ public class AspiDaw {
                         eleccionSwitch2 = false;
                     }
 
-                    
                     break;
 
                 case 2:
-                    
+
                     String nivelBateriaIntroducido = JOptionPane.showInputDialog(" Introduza la carga actual del robot");
                     nivelBateria = Double.parseDouble(nivelBateriaIntroducido);
                     //condicion para que el nivel de carga sea entre 0 y 100
-                    if (nivelBateria >= 0 && nivelBateria <= 100) {  
+
+                    if (nivelBateria >= 0 && nivelBateria <= 100) {
+                        //si el nivel de bateria es mayor que 0 y menos que 100 se 
+                        //guarda el valor false y sale
                         eleccionSwitch = false;
                         break;
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(null, " La carga introducida no puede ser menor que 0 o mayor que 100");
                         //Si la condicion no se cumple se vuelve a repetir el bucle
@@ -120,8 +122,40 @@ public class AspiDaw {
                         break;
                     }
             }
-
+            //condicion OR hasta que no se cumpla y el while sea false no sale
         } while (eleccionSwitch || eleccionSwitch2);
+        
+        //Aquí empieza otro bucle do while para el menu, hasta que no se pulse el case 6 que es salir
+        //no sale
+        do {
+            //opciones del programa, he añadido la carga aquí tambien por si después quiere cambiarla
+            //eso si, las dependencias no se pueden cambiar
+            String opcion = JOptionPane.showInputDialog("Opciones del programa\n"
+                    + "1.- Carga\n"
+                    + "2.- Aspiración\n"
+                    + "3.- Aspiración y Fregado\n"
+                    + "4.- ESTADO GENERAL\n"
+                    + "5.- BASE DE CARGA\n"
+                    + "6.- Salir");
+            
+            opcionElegida = Integer.parseInt(opcion);
+            //Switch en el que va cada opcion del menu
+            switch (opcionElegida) {
+
+                case 1:
+
+                case 2:
+
+                case 3:
+
+                case 4:
+
+                case 5:
+
+                case 6:
+
+            }
+        } while (repetir);
 
     }
 }
