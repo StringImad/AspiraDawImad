@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imad.aspiradoraimad;
+package programa;
 
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -16,7 +16,7 @@ public class AspiDaw {
 
     public static void inicioSesion() {
         // Login para acceder, se va a repetir hasta que se cumpla la condicion del while
-        boolean acceso = true;
+        boolean acceso;
         // al entrar en el if se sale
         do {
             //declaración de dos constantes de tipo String
@@ -47,7 +47,7 @@ public class AspiDaw {
         //Declaración de las variables que vamos a utilizar
         int opcionElegida;
         int eleccionPrincipal;
-        int opcionAspirar;
+        int opcionAspirar; 
         boolean repetir = true;
 
         double nivelBateria = 0;
@@ -61,7 +61,7 @@ public class AspiDaw {
         boolean eleccionSwitch2 = true;
         int cantDepen;
 
-        //Cracion de los arrays que vamos a utilizar
+        //Creacion de los arrays que vamos a utilizar
         //dependeciasCasa no tiene valor ya que se va a meter más tardes
         int[] dependenciasCasa = null;
         //array de 5 posiciones con el valor introducido ya
