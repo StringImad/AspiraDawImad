@@ -14,37 +14,9 @@ import javax.swing.JOptionPane;
  */
 public class AspiDaw {
 
-    public static void main(String[] args) {
-        
-         Calendar calendario = Calendar.getInstance();
-        //Declaración de las variables que vamos a utilizar
-        int opcionElegida;
-        int eleccionPrincipal;
-        int opcionAspirar;
-        boolean repetir = true;
-        boolean acceso = true;
-        double nivelBateria = 0;
-        double bateriInferior = 3.0;
-        final double MODOASPIRACION = 1.5;
-        final double MODOFREGADO = 2.25;
-        int hora, minutos, segundos;
-        String posicion = " Base de carga ";
-        int metrosCuadrados = 0;
-        boolean eleccionSwitch = true;
-        boolean eleccionSwitch2 = true;
-
-        //Cracion de los arrays que vamos a utilizar
-        //dependeciasCasa no tiene valor ya que se va a meter más tardes
-        int[] dependenciasCasa = null;
-        //array de 5 posiciones con el valor introducido ya
-        String[] dependenciasVilla = new String[5];
-        dependenciasVilla[0] = "salon";
-        dependenciasVilla[1] = "dormitorio";
-        dependenciasVilla[2] = "dormitorio2";
-        dependenciasVilla[3] = "cocina";
-        dependenciasVilla[4] = "Baño";
-
+    public static void inicioSesion() {
         // Login para acceder, se va a repetir hasta que se cumpla la condicion del while
+        boolean acceso = true;
         // al entrar en el if se sale
         do {
             //declaración de dos constantes de tipo String
@@ -67,6 +39,41 @@ public class AspiDaw {
 
             }
         } while (acceso);
+    }
+
+    public static void main(String[] args) {
+
+        Calendar calendario = Calendar.getInstance();
+        //Declaración de las variables que vamos a utilizar
+        int opcionElegida;
+        int eleccionPrincipal;
+        int opcionAspirar;
+        boolean repetir = true;
+
+        double nivelBateria = 0;
+        double bateriInferior = 3.0;
+        final double MODOASPIRACION = 1.5;
+        final double MODOFREGADO = 2.25;
+        int hora, minutos, segundos;
+        String posicion = " Base de carga ";
+        int metrosCuadrados = 0;
+        boolean eleccionSwitch = true;
+        boolean eleccionSwitch2 = true;
+        int cantDepen;
+
+        //Cracion de los arrays que vamos a utilizar
+        //dependeciasCasa no tiene valor ya que se va a meter más tardes
+        int[] dependenciasCasa = null;
+        //array de 5 posiciones con el valor introducido ya
+        String[] dependenciasVilla = new String[5];
+        dependenciasVilla[0] = "salon";
+        dependenciasVilla[1] = "dormitorio";
+        dependenciasVilla[2] = "dormitorio2";
+        dependenciasVilla[3] = "cocina";
+        dependenciasVilla[4] = "Baño";
+
+        // Login para acceder, se va a repetir hasta que se cumpla la condicion del while
+        inicioSesion();
         //
         do {
             String opcionPrincipal = JOptionPane.showInputDialog("Opciones del programa\n"
@@ -80,10 +87,18 @@ public class AspiDaw {
 
                 case 1:
                     JOptionPane.showMessageDialog(null, "Usted acaba de seleccionar configuración del sistema");
-                    String CantidadDependencias = JOptionPane.showInputDialog(" Introduza el número de dependencias de la casa");
-                    int CantDepen = Integer.parseInt(CantidadDependencias);
+                     {
 
-                    dependenciasCasa = new int[CantDepen];
+                        do {
+                            String CantidadDependencias = JOptionPane.showInputDialog(" Introduza el número de dependencias de la casa");
+                            cantDepen = Integer.parseInt(CantidadDependencias);
+                            if (cantDepen != 5) {
+                                JOptionPane.showMessageDialog(null, "El programa esta diseñado para 5 dependencias, en un futuro cercano implementaremos cambios en las dependencias");
+                            }
+                        } while (cantDepen != 5);
+                    }
+
+                    dependenciasCasa = new int[cantDepen];
                     //creación del bucle for que nos va a permitir meter los metros de cada dependencia 
 
                     for (int i = 0; i < dependenciasCasa.length; i++) {
@@ -192,9 +207,10 @@ public class AspiDaw {
                                     do {
                                         //como esta planteada la aspiradora es imposible que limpie una hab de mas de 64 metros
                                         //entonces tengo puesto el if para que se salga y no muestre las habitaciones limpias
-                                        //tambien si k es menor que 1 significa que no ha podido limpiar ninguna habitación por lo tanto se sale tambien
+                                        //tambien si k es menor que dependenciasCasa.length significa que no ha podido limpiar ninguna habitación por lo tanto se sale tambien
                                         if (dependenciasCasa[i] > 64 || k < 1) {
                                             JOptionPane.showMessageDialog(null, "No se ha podido limpiar.", "Batería insuficiente", JOptionPane.ERROR_MESSAGE);
+                                            nivelBateria = 3.0;
                                             break;
                                         }
                                         //pinta por pantalla las habitaciones que ha limpiado
@@ -358,12 +374,14 @@ public class AspiDaw {
                                             + " Las habitaciones limpiadas son: ");
 
                                     do {
+
                                         if (dependenciasCasa[i] > 64 || k < 1) {
+
                                             JOptionPane.showMessageDialog(null, "No se ha podido limpiar.", "Batería insuficiente", JOptionPane.ERROR_MESSAGE);
+                                            nivelBateria = 3.0;
                                             break;
                                         }
                                         JOptionPane.showMessageDialog(null, dependenciasVilla[j]);
-
                                         posicion = dependenciasVilla[k];
                                         j++;
                                         Acumulador++;
@@ -489,8 +507,7 @@ public class AspiDaw {
 
                     break;
                 case 4:
-                   
-                  
+
                     hora = calendario.get(Calendar.HOUR_OF_DAY);
                     minutos = calendario.get(Calendar.MINUTE);
                     segundos = calendario.get(Calendar.SECOND);
@@ -500,14 +517,14 @@ public class AspiDaw {
                     }
                     System.out.println(hora + ":" + minutos + ":" + segundos);
                     JOptionPane.showMessageDialog(null, "El nivel de carga actual es: " + nivelBateria
-                    + "\n La hora actual es: " + hora + ":" + minutos + ":" + segundos
-                    + "\n En el " + dependenciasVilla[0] + " hay " + dependenciasCasa[0] + " metros"
-                    + "\n En el " + dependenciasVilla[1] + " hay " + dependenciasCasa[1] + " metros"
-                    + "\n En el " + dependenciasVilla[2] + " hay " + dependenciasCasa[2] + " metros"
-                    + "\n En el " + dependenciasVilla[3] + " hay " + dependenciasCasa[3] + " metros"
-                    + "\n En el " + dependenciasVilla[4] + " hay " + dependenciasCasa[4] + " metros"
-                    + "\n El aspirador se encuentra en: " + posicion
-                    + "\n Los metros cuadrados totales: " + metrosCuadrados
+                            + "\n La hora actual es: " + hora + ":" + minutos + ":" + segundos
+                            + "\n En el " + dependenciasVilla[0] + " hay " + dependenciasCasa[0] + " metros"
+                            + "\n En el " + dependenciasVilla[1] + " hay " + dependenciasCasa[1] + " metros"
+                            + "\n En el " + dependenciasVilla[2] + " hay " + dependenciasCasa[2] + " metros"
+                            + "\n En el " + dependenciasVilla[3] + " hay " + dependenciasCasa[3] + " metros"
+                            + "\n En el " + dependenciasVilla[4] + " hay " + dependenciasCasa[4] + " metros"
+                            + "\n El aspirador se encuentra en: " + posicion
+                            + "\n Los metros cuadrados totales: " + metrosCuadrados
                     );
 
                     break;
